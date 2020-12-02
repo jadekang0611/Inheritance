@@ -3,8 +3,15 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	    Dog dog = new Dog();
-	    dog.makeSound();
+	    Object[] list = {new Dog(), new DogFood()};
+	    Dog dog = (Dog) list[0];
+//	    dog.makeSound();
+        for(Object object : list) {
+            if(object instanceof Animal) {
+                ((Animal) object).makeSound();
+            }
+        }
+	    System.out.printf("Animal Farm?");
     }
 }
 
@@ -22,3 +29,5 @@ class Dog extends Animal {
         sound = "bark";
     }
 }
+
+class DogFood {}
